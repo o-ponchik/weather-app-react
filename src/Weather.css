@@ -61,8 +61,12 @@ time {
   margin-bottom: 0;
 }
 
-.hummidy {
-  line-height: 2em;
+.indicators {
+  line-height: 1em;
+}
+
+.indicators p {
+  font-weight: 500;
 }
 
 .celsium {
