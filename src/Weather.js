@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     console.log(response.data);
@@ -20,29 +21,39 @@ export default function Weather() {
     });
   }
 
-  // let weatherData = {
-  //   city: "Toronto",
-  //   day: "Sunday",
-  //   date: "8 May",
-  //   time: "10:00",
-  //   temperature: 18,
-  //   humidity: 41,
-  //   wind: 5,
-  //   description: "Sunny",
-  // };
+  function search() {
+    const apiKey = `8fe82db9f96fcaef6fefb61a912cecd3`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+    // search for city
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="container shadow">
           <div className="p-3">
             <div className="SearchForm">
-              <form className="row g-3 d-flex justify-content-center">
+              <form
+                className="row g-3 d-flex justify-content-center"
+                onSubmit={handleSubmit}
+              >
                 <div className="col-auto">
                   <input
                     type="search"
                     className="form-control"
                     placeholder="Enter a city"
                     autoFocus="on"
+                    onChange={handleCityChange}
                   />
                 </div>
                 <div className="col-auto">
@@ -57,46 +68,7 @@ export default function Weather() {
                 </div>
               </form>
             </div>
-            <div className="CityDateTime search-city">
-              <h1 className="current-city">{weatherData.city}</h1>
-              <h2>
-                <FormattedDate date={weatherData.date} />
-              </h2>
-            </div>
-            <div className="row current-weather">
-              <div className="col-5 temperature">
-                <h2>
-                  <span className="degrees">
-                    {Math.round(weatherData.temperature)}
-                  </span>
-                  <span className="celsium"> °C</span>
-                  <span style={{ fontSize: 30 + "px" }}>|</span>
-                  <span className="fahrenheit">°F</span>
-                </h2>
-                <p className="description text-capitalize">
-                  {weatherData.description}
-                </p>
-              </div>
-
-              <div className="col-2">
-                <img src={weatherData.iconUrl} alt={weatherData.description} />
-                {/* <i className="icofont-sun-alt main"></i> */}
-              </div>
-
-              <div className="col-5 indicators">
-                <p className="humid">
-                  Humidity: {""}
-                  <span className="humidity-level">
-                    {weatherData.humidity}
-                  </span>{" "}
-                  %
-                </p>
-                <p className="wind">
-                  Wind: {""}
-                  <span className="wind-speed">{weatherData.wind}</span> km/h
-                </p>
-              </div>
-            </div>
+            <WeatherInfo info={weatherData} />
 
             {/* Forecat */}
             <div className="row g-2 five-days">
@@ -182,11 +154,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    const apiKey = `8fe82db9f96fcaef6fefb61a912cecd3`;
-    let city = `London`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
