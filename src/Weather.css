@@ -33,16 +33,6 @@
   margin-top: 20px;
 }
 
-#current-date {
-  font-size: 18px;
-  font-weight: 400;
-}
-
-time {
-  font-size: medium;
-  font-weight: 300;
-}
-
 /* Current weather */
 .current-weather {
   margin-bottom: 40px;
@@ -66,7 +56,7 @@ time {
 }
 
 .indicators p {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .celsium {
