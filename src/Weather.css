@@ -59,18 +59,19 @@
   font-weight: 400;
 }
 
-.celsium {
-  font-size: 30px;
+.celsium,
+.fahrenheit {
+  font-size: 26px;
+}
+
+.celsium a,
+.fahrenheit a {
+  text-decoration: none;
 }
 
 .fahrenheit,
 .celsium {
   cursor: pointer;
-}
-
-.fahrenheit {
-  font-weight: 100;
-  font-size: 25px;
 }
 
 .current-weather .main {
