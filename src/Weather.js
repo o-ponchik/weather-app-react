@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -69,74 +70,9 @@ export default function Weather(props) {
               </form>
             </div>
             <WeatherInfo info={weatherData} />
+            <WeatherForecast />
 
             {/* Forecat */}
-            <div className="row g-2 five-days">
-              <div className="col icons shadow-sm p-2 rounded">
-                <h3>Mon</h3>
-                <img
-                  src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="icon weather"
-                  className="imgForecast"
-                />
-                {/* <i className="icofont-sun-alt"></i> */}
-                <p>
-                  19°C<span> 8°C</span>
-                </p>
-              </div>
-
-              <div className="col icons shadow-sm p-2 rounded">
-                <h3>Tue</h3>
-                <img
-                  src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="icon weather"
-                  className="imgForecast"
-                />
-                {/* <i className="icofont-clouds"></i> */}
-                <p>
-                  16°C<span> 7°C</span>
-                </p>
-              </div>
-
-              <div className="col icons shadow-sm p-2 rounded">
-                <h3>Wed</h3>
-                <img
-                  src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="icon weather"
-                  className="imgForecast"
-                />
-                {/* <i className="icofont-sun-alt"></i> */}
-                <p>
-                  22°C<span> 11°C</span>
-                </p>
-              </div>
-
-              <div className="col icons shadow-sm p-2 rounded">
-                <h3>Thu</h3>
-                <img
-                  src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="icon weather"
-                  className="imgForecast"
-                />
-                {/* <i className="icofont-full-sunny"></i> */}
-                <p>
-                  18°C<span> 8°C</span>
-                </p>
-              </div>
-
-              <div className="col icons shadow-sm p-2 rounded">
-                <h3>Fri</h3>
-                <img
-                  src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="icon weather"
-                  className="imgForecast"
-                />
-                {/* <i className="icofont-rainy-thunder"></i> */}
-                <p>
-                  13°C<span> 4°C</span>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
         <p className="openSourceLink">
