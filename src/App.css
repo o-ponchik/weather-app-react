@@ -22,8 +22,8 @@
   max-height: fit-content;
   /* width: 700px; */
   background: linear-gradient(
-    44.8deg,
-    rgba(255, 136, 102, 0.67) -53.1%,
-    rgba(255, 221, 136, 0.28) 49%
+    179deg,
+    rgb(254, 241, 245) 0%,
+    rgb(242, 237, 255) 100%
   );
 }

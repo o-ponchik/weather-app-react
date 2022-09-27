@@ -13,7 +13,7 @@ export default function WeatherForecastDay(props) {
   return (
     <div className="col icons shadow-sm p-2 rounded">
       <h3>{day()}</h3>
-      <WeatherIcon code={props.data.weather[0].icon} size={30} />
+      <WeatherIcon code={props.data.weather[0].icon} size={26} />
 
       <p>
         {Math.round(props.data.temp.max)}°C
