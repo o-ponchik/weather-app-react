@@ -63,11 +63,11 @@ export default function Weather(props) {
                     Search
                   </button>
                 </div>
-                <div className="col-auto">
+                {/* <div className="col-auto">
                   <button type="button" className="btn btn-success">
                     Current
                   </button>
-                </div>
+                </div> */}
               </form>
             </div>
             <WeatherInfo info={weatherData} />
